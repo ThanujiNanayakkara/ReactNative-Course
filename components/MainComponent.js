@@ -9,6 +9,7 @@ import Home from './HomeComponent';
 import Contactus from './ContactusComponent';
 import Aboutus from './AboutusComponent';
 import Dishdetail from './DishDetailComponent';
+import Reservation from './ReservationComponent';
 import {Icon} from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
@@ -34,6 +35,7 @@ const HomeStack = createStackNavigator();
 const MenuStack = createStackNavigator();
 const AboutusStack = createStackNavigator();
 const ContactusStack = createStackNavigator();
+const ReservationStack = createStackNavigator();
 
 const HomeNavigator = () => {
   return (
@@ -111,6 +113,31 @@ const ContactusNavigator = () => {
     )
         })}/>
     </ContactusStack.Navigator>
+  );
+};
+
+const ReservationNavigator = () => {
+  return (
+    <ReservationStack.Navigator
+      headerMode='screen'
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#512DA8',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          color: '#fff',
+        },
+
+      }}
+    >
+      <ReservationStack.Screen name='Contact Us' component={Reservation} options={({ navigation, route }) => ({
+          headerLeft: () => (
+            <Icon name='menu' size={24} color='white' 
+            onPress={() => navigation.toggleDrawer()}></Icon>
+    )
+        })}/>
+    </ReservationStack.Navigator>
   );
 };
 const MenuNavigator = () => {
@@ -223,6 +250,18 @@ const MainNavigator = () => {
                 color={tintColor}>
             </Icon>)}}
           component={ContactusNavigator}/>
+        <MainDrawerStack.Screen
+          name='Reserve Table'
+          options={{ drawerLabel: 'Reserve Table' , 
+          drawerIcon: ({tintColor, focused})=>(
+            <Icon 
+                name='cutlery'
+                type='font-awesome'
+                size={24}
+                color={tintColor}>
+            </Icon>)}}
+          component={ReservationNavigator}/>
+        
         
     </MainDrawerStack.Navigator>
   );
