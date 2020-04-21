@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal} from 'react-native';
+import { Card,Rating,Icon, Input } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 
 class Reservation extends Component {
@@ -61,7 +61,7 @@ class Reservation extends Component {
                     <Switch
                         style={styles.formItem}
                         value={this.state.smoking}
-                        onTintColor='#512DA8'
+                        trackColor='#512DA8'
                         onValueChange={(value) => this.setState({smoking: value})}
                         >
                     </Switch>
@@ -69,11 +69,11 @@ class Reservation extends Component {
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Date and Time</Text>
                     <DatePicker
-                        style={{flex: 2, marginRight: 20}}
+                        style={{flex: 2, marginRight: 15}}
                         value={this.state.date}
                         format=''
                         mode="datetime"
-                        placeholder="select date and Time"
+                        placeholder="Select Date and Time"
                         minDate="2020-04-20"
                         confirmBtnText="Confirm"
                         cancelBtnText="Cancel"
@@ -99,7 +99,7 @@ class Reservation extends Component {
                         color="#512DA8"
                         accessibilityLabel="Learn more about this purple button"
                         />
-                </View>
+                </View>   
                 <Modal
                     animationType={'slide'}
                     transparent={false}
