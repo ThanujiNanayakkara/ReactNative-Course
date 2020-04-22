@@ -158,7 +158,7 @@ const FavoritesNavigator = () => {
 
       }}
     >
-      <ContactusStack.Screen name='Favorites' component={Favorites} options={({ navigation, route }) => ({
+      <FavoritesStack.Screen name='Favorites' component={Favorites} options={({ navigation, route }) => ({
           headerLeft: () => (
             <Icon name='menu' size={24} color='white' 
             onPress={() => navigation.toggleDrawer()}></Icon>
@@ -278,8 +278,8 @@ const MainNavigator = () => {
             </Icon>)}}
           component={ContactusNavigator}/>
         <MainDrawerStack.Screen
-          name='Favorites'
-          options={{ drawerLabel: 'Favorites' , 
+          name='My Favorites'
+          options={{ drawerLabel: 'My Favorites' , 
           drawerIcon: ({tintColor, focused})=>(
             <Icon 
                 name='heart'
