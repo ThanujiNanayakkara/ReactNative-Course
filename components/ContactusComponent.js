@@ -1,14 +1,27 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {Card} from 'react-native-elements';
+import {Card, Button, Icon} from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
+import * as MailComposer from 'expo-mail-composer';
+
 
 
 class Contactus extends Component {
 
+    
+
     static navigationOptions={
         title: 'Contact Us'
     };
+
+    sendMail(){
+        MailComposer.composeAsync({
+            recipients:['confusion@food.net'],
+            subject: 'Enquiry',
+            body: 'To whom it may concern: '
+        })
+    }
+
 
     render(){
         return(
@@ -31,8 +44,12 @@ class Contactus extends Component {
                     </Text>
                     <Text style={{margin:10}}>
                         Email:confusion@food.net
-                    </Text>                
-                </Card>
+                    </Text>  
+                    <Button
+                        title="Send Email" buttonStyle={{backgroundColor:'#512DA8'}}
+                        icon={<Icon name='envelope-o' type='font-awesome' color='white'/>}
+                        onPress={this.sendMail}></Button>              
+                </Card> 
             </Animatable.View>
         );
     }
